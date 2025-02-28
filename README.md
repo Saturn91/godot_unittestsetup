@@ -26,13 +26,21 @@ func test_fails():
 ```
 
 # Setup to run on each git commit
-1. create .env file based on .env_template
-2. edit GODOT_PATH to point to your godot executable
+When using Godot for a project with multiple people or when implementing complicated interconnected systems which relay on each other, it can make sense to check on each commit if some tests got broken. If this gets respected, you force everyone working on the team (including yourself) to submit to rules defined within the test files. If you run into a bug caused by missunderstanding a certain function or node - create a test for it, check if it fails for the introduced bug and then fix the bug... problem should be gone now forever.
+
+1. create `.env` file by copying and renaming .env_template
+2. edit GODOT_PATH within the `.env` file to point to your godot executable
 3. setup ./.scripts/run_tests.sh as shown bellow
-4. NOTE:  ONLY SUBDIRS of `res://test/*` will be search for test_FILENAME.gd files
+4. NOTE:  ONLY SUBDIRS of `res://test/*` will be searched for test_FILENAME.gd files
 4. run . ./.scripts/run_tests.sh to see if it actually runs your tests
 5. setup `.git\hooks\pre-commit`
-6. commit to git, tests should be run
+6. commit to git, tests should be run, if tests fail, the commit will be aborted
+
+
+```
+# .env file
+GODOT_PATH=C:\Users\   PATH TO GODOT   \Godot_v4.3-stable_win64.exe\godot.exe
+```
 
 ```bash
 # .scripts\run_tests.sh
