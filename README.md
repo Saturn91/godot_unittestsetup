@@ -24,3 +24,8 @@ func test_fails():
 	# this test will fail because those strings are not equal
 	assert_eq('hello', 'goodbye')
 ```
+
+# Setup to run on each got commit
+1. create .env file based on .env_template
+2. edit GODOT_PATH to point to your godot executable
+3. run . ./.scripts/run_tests.sh to see if it actually runs your tests
