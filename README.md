@@ -25,7 +25,22 @@ func test_fails():
 	assert_eq('hello', 'goodbye')
 ```
 
-# Setup to run on each got commit
+# Setup to run on each git commit
 1. create .env file based on .env_template
 2. edit GODOT_PATH to point to your godot executable
 3. run . ./.scripts/run_tests.sh to see if it actually runs your tests
+4. setup `.git\hooks\pre-commit`
+5. commit to git, tests should be run
+
+```bash
+# .git\hooks\pre-commit
+
+#!/bin/sh
+. ./.scripts/run_tests.sh
+
+# Check if the tests failed
+if [ $? -ne 0 ]; then
+    echo "Tests failed, aborting commit"
+    exit 1
+fi
+```

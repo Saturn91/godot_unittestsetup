@@ -20,7 +20,7 @@ echo $GODOT_PATH
 results=$?
 
 # run tests
-$GODOT_PATH -d -s --path "$PWD" addons/gut/gut_cmdln.gd -gdir=res://test/unit -gexit
+$GODOT_PATH -d -s --path "$PWD" addons/gut/gut_cmdln.gd -gdir=res://test -gexit
 
 status=$?
 
