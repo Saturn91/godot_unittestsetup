@@ -34,6 +34,6 @@ func test_attacking() -> void:
 	character.gets_attacked_by(attacker)
 	
 	assert_eq(character._health, 0, "has 0 hp left after being attacked twice with 9")
-	assert_eq(character.is_alive(), true, "dead")
+	assert_eq(character.is_alive(), false, "character is no longer alive after two attackes")
 	
 	attacker.queue_free()
